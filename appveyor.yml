@@ -11,9 +11,9 @@ init:
 before_build:
 - appveyor-retry dotnet restore -v Minimal
 build_script:
-- dotnet build "LannisterAPI" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
+- dotnet build "LannisterAPI" -c %CONFIGURATION% --version-suffix %LABEL%
 after_build:
-- dotnet publish "LannisterAPI" -c %CONFIGURATION% --no-build --version-suffix %LABEL% -o artifacts
+- dotnet publish "LannisterAPI" -c %CONFIGURATION% --version-suffix %LABEL% -o artifacts
 artifacts:
 - path: artifacts\*.*
 cache:
