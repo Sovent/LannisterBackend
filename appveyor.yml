@@ -21,3 +21,4 @@ deploy:
   host: $(FTP_HOST)
   username: $(FTP_USER_NAME)
   password: $(FTP_PASSWORD)
+  artifact: .\LannisterAPI\artifacts\**\*.*
