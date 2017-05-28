@@ -15,3 +15,9 @@ after_build:
 - dotnet publish "LannisterAPI" -c %CONFIGURATION% --version-suffix %LABEL% -o .\artifacts
 artifacts:
 - path: .\LannisterAPI\artifacts\**\*.*
+deploy:
+  provider: FTP
+  protocol: ftp
+  host: %FTP_HOST%
+  username: %FTP_USER_NAME%
+  password: %FTP_PASSWORD%
