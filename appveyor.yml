@@ -12,13 +12,14 @@ before_build:
 build_script:
 - dotnet build "LannisterAPI" -c %CONFIGURATION% --version-suffix %LABEL%
 after_build:
-- dotnet publish "LannisterAPI" -c %CONFIGURATION% --version-suffix %LABEL% -o .\artifacts
+- dotnet publish "LannisterAPI" -c %CONFIGURATION% --version-suffix %LABEL% -o .\..\artifacts
+- ps: Compress-Archive -Path "artifacts\*" -DestinationPath "artifacts.zip"
 artifacts:
-- path: .\LannisterAPI\artifacts\**\*.*
+- path: artifacts.zip
 deploy:
   provider: FTP
   protocol: ftp
   host: $(FTP_HOST)
   username: $(FTP_USER_NAME)
   password: $(FTP_PASSWORD)
-  artifact: .\LannisterAPI\artifacts\**\*.*
+  application: artifacts.zip
