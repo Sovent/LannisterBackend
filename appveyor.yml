@@ -18,6 +18,6 @@ artifacts:
 deploy:
   provider: FTP
   protocol: ftp
-  host: %FTPHOST%
-  username: %FTPUSERNAME%
-  password: %FTPPASSWORD%
+  host: $(FTP_HOST)
+  username: $(FTP_USER_NAME)
+  password: $(FTP_PASSWORD)
