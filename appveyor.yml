@@ -19,7 +19,10 @@ artifacts:
 deploy:
   provider: FTP
   protocol: ftp
-  host: $(FTP_HOST)
-  username: $(FTP_USER_NAME)
-  password: $(FTP_PASSWORD)
+  host:
+    secure: wxerQP2q5gIQZ5HY/eP0S+iROzbaRRHWfIKtr1rLZP8=
+  username:
+    secure: KKJYq0FwgGfZTfOlwFNFwR52AyHcBjcaXny0y2lyCOY=
+  password:
+    secure: x/elDXXySkDI0Zp5Ya6xXQ==
   application: artifacts.zip
