@@ -12,6 +12,6 @@ before_build:
 build_script:
 - dotnet build "LannisterAPI" -c %CONFIGURATION% --version-suffix %LABEL%
 after_build:
-- dotnet publish "LannisterAPI" -c %CONFIGURATION% --version-suffix %LABEL% -o artifacts\LannisterAPI
+- dotnet publish "LannisterAPI" -c %CONFIGURATION% --version-suffix %LABEL% -o .\artifacts\LannisterAPI
 artifacts:
 - path: .\artifacts\**\*.*
