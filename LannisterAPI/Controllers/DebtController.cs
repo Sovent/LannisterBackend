@@ -32,7 +32,7 @@ namespace LannisterAPI.Controllers
         }
 
         [HttpGet]
-        [Route("tracking/{trackingId}/debts")]
+        [Route("trackings/{trackingId}/debts")]
         [ProducesResponseType(typeof(TrackingDebts), 200)]
         [ProducesResponseType(typeof(Error), 400)]
         public async Task<IActionResult> GetTrackingDebts(string trackingId)

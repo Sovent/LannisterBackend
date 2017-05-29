@@ -37,7 +37,7 @@ namespace LannisterAPI.Controllers
         }
 
         [HttpGet]
-        [Route("tracking/{id}")]
+        [Route("trackings/{id}")]
         [ProducesResponseType(typeof(Tracking), 200)]
         [ProducesResponseType(typeof(Error), 400)]
         public async Task<IActionResult> GetTracking(string id)

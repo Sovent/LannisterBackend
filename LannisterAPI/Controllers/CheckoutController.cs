@@ -12,7 +12,7 @@ namespace LannisterAPI.Controllers
     public class CheckoutController : Controller
     {
         [HttpGet]
-        [Route("tracking/{trackingId}/checkouts")]
+        [Route("trackings/{trackingId}/checkouts")]
         [ProducesResponseType(typeof(TrackingCheckoutPreviewList), 200)]
         [ProducesResponseType(typeof(Error), 400)]
         public async Task<IActionResult> GetTrackingCheckouts(string trackingId)
@@ -21,7 +21,7 @@ namespace LannisterAPI.Controllers
         }
 
         [HttpGet]
-        [Route("checkout/{checkoutId}")]
+        [Route("checkouts/{checkoutId}")]
         [ProducesResponseType(typeof(Checkout), 200)]
         [ProducesResponseType(typeof(Error), 400)]
         public async Task<IActionResult> GetCheckout(string checkoutId)
@@ -39,7 +39,7 @@ namespace LannisterAPI.Controllers
         }
 
         [HttpDelete]
-        [Route("checkout/{checkoutId}")]
+        [Route("checkouts/{checkoutId}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(Error), 400)]
         public async Task<IActionResult> DeleteCheckout(string checkoutId)

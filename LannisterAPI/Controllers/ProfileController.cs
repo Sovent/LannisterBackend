@@ -8,7 +8,7 @@ namespace LannisterAPI.Controllers
     public class ProfileController : Controller
     {
         [HttpGet]
-        [Route("profile/{userId}")]
+        [Route("profiles/{userId}")]
         [ProducesResponseType(typeof(ProfileOwnerProfile), 200)]
         [ProducesResponseType(typeof(UserProfile), 200)]
         [ProducesResponseType(typeof(Error), 400)]
@@ -18,7 +18,7 @@ namespace LannisterAPI.Controllers
         }
 
         [HttpPost]
-        [Route("profile/{userId}/invitations")]
+        [Route("profiles/{userId}/invitations")]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(Error), 400)]
         public async Task<IActionResult> RespondOnTrackingInvitation([FromBody] RespondOnTrackingInvitationRequest request)
