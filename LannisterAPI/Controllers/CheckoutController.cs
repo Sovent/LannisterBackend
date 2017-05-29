@@ -28,5 +28,14 @@ namespace LannisterAPI.Controllers
         {
             return Ok();
         }
+
+        [HttpPost]
+        [Route("checkouts")]
+        [ProducesResponseType(typeof(CreateCheckoutResponse), 200)]
+        [ProducesResponseType(typeof(Error), 400)]
+        public async Task<IActionResult> CreateCheckout([FromBody] CreateCheckoutRequest request)
+        {
+            return Ok();
+        }
     }
 }

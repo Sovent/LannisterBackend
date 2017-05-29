@@ -37,7 +37,7 @@ namespace LannisterAPI.Models
 
     public class Checkout
     {
-        public Checkout(string checkoutId, string name, string trackingId, string trackingName, double sum, string currencyCode, string authorId, string authorName, Uri authorAvatar, Uri[] attachments)
+        public Checkout(string checkoutId, string name, string trackingId, string trackingName, double sum, string currencyCode, string authorId, string authorName, Uri authorAvatar, Uri[] attachments, ExcludedFromCheckoutUser[] excludedUsers)
         {
             CheckoutId = checkoutId;
             Name = name;
@@ -49,6 +49,7 @@ namespace LannisterAPI.Models
             AuthorName = authorName;
             AuthorAvatar = authorAvatar;
             Attachments = attachments;
+            ExcludedUsers = excludedUsers;
         }
 
         [Required] public string CheckoutId { get; }
@@ -61,5 +62,37 @@ namespace LannisterAPI.Models
         [Required] public string AuthorName { get; }
         [Required] public Uri AuthorAvatar { get; }
         [Required] public Uri[] Attachments { get; }
+        [Required] public ExcludedFromCheckoutUser[] ExcludedUsers { get; }
+    }
+
+    public class ExcludedFromCheckoutUser
+    {
+        public ExcludedFromCheckoutUser(string userId, Uri avatar)
+        {
+            UserId = userId;
+            Avatar = avatar;
+        }
+
+        [Required] public string UserId { get; }
+        [Required] public Uri Avatar { get; }
+    }
+
+    public class CreateCheckoutRequest
+    {
+        [Required] public string Name { get; set; }
+        [Required] public string TrackingId { get; set; }
+        [Required] public double Amount { get; set; }
+        [Required] public string[] ExcludedUserIds { get; set; }
+        [Required] public Uri[] Attachments { get; set; }
+    }
+
+    public class CreateCheckoutResponse
+    {
+        public CreateCheckoutResponse(string checkoutId)
+        {
+            CheckoutId = checkoutId;
+        }
+
+        [Required] public string CheckoutId { get; }
     }
 }

@@ -100,4 +100,22 @@ namespace LannisterAPI.Models
         [Required] public DateTimeOffset Date { get; }
         [Required] public Uri[] Attachments { get; }
     }
+
+    public class CreateTransactionRequest
+    {
+        [Required] public string ReceiverUserId { get; set; }
+        [Required] public string TransactionId { get; set; }
+        [Required] public double Amount { get; set; }
+        [Required] public Uri[] Attachments { get; set; }
+    }
+
+    public class CreateTransactionResponse
+    {
+        public CreateTransactionResponse(string transactionId)
+        {
+            TransactionId = transactionId;
+        }
+
+        [Required] public string TransactionId { get; }
+    }
 }

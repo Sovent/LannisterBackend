@@ -59,17 +59,35 @@ namespace LannisterAPI.Models
 
     public class TrackingParticipant
     {
-        public TrackingParticipant(string id, string name, string nickname, Uri avatar)
+        public TrackingParticipant(string id, string name, string nickname, Uri avatar, bool acceptedInvite)
         {
             Id = id;
             Name = name;
             Nickname = nickname;
             Avatar = avatar;
+            AcceptedInvite = acceptedInvite;
         }
 
         [Required] public string Id { get; }
         [Required] public string Name { get; }
         [Required] public string Nickname { get; }
         [Required] public Uri Avatar { get; }
+        [Required] public bool AcceptedInvite { get; }
+    }
+
+    public class CreateTrackingRequest
+    {
+        [Required] public string TrackingName { get; set; }
+        public string Currency { get; set; }
+    }
+
+    public class CreateTrackingResponse
+    {
+        public CreateTrackingResponse(string trackingId)
+        {
+            TrackingId = trackingId;
+        }
+
+        public string TrackingId { get; }
     }
 }

@@ -44,9 +44,9 @@ namespace LannisterAPI.Controllers
         {
             var participants = new[]
             {
-                new TrackingParticipant(Guid.NewGuid().ToString(), "Jessica Jones", "Jjones", new Uri("https://typeset-beta.imgix.net/2017%2F2%2F15%2Fa7a7b3ca-2255-4625-9fb9-fefdb19a5a96.jpg")),
-                new TrackingParticipant(Guid.NewGuid().ToString(), "Sergey Piterskiy", "pitor", new Uri("https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg")),
-                new TrackingParticipant(Guid.NewGuid().ToString(), "Herman Gold", "X-Man", new Uri("https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg")) 
+                new TrackingParticipant(Guid.NewGuid().ToString(), "Jessica Jones", "Jjones", new Uri("https://typeset-beta.imgix.net/2017%2F2%2F15%2Fa7a7b3ca-2255-4625-9fb9-fefdb19a5a96.jpg"), true),
+                new TrackingParticipant(Guid.NewGuid().ToString(), "Sergey Piterskiy", "pitor", new Uri("https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg"), true),
+                new TrackingParticipant(Guid.NewGuid().ToString(), "Herman Gold", "X-Man", new Uri("https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg"), false) 
             };
 
             return Ok(new Tracking(
@@ -57,6 +57,15 @@ namespace LannisterAPI.Controllers
                 participants[0].Id,
                 DateTimeOffset.UtcNow.AddDays(-23),
                 null));
+        }
+
+        [HttpPost]
+        [Route("trackings")]
+        [ProducesResponseType(typeof(CreateTrackingResponse), 200)]
+        [ProducesResponseType(typeof(Error), 400)]
+        public async Task<IActionResult> CreateTracking([FromBody] CreateTrackingRequest createTrackingRequest)
+        {
+            return Ok();
         }
     }
 }
