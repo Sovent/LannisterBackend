@@ -70,4 +70,34 @@ namespace LannisterAPI.Models
         [Required] public string TrackingId { get; }
         [Required] public TrackingTransactionPreview[] Transactions { get; }
     }
+
+    public class Transaction
+    {
+        public Transaction(string transactionId, double amount, string currencyCode, string senderUserId, string senderName, Uri senderAvatar, string receiverUserId, string receiverName, Uri receiverAvatar, DateTimeOffset date, Uri[] attachments)
+        {
+            TransactionId = transactionId;
+            Amount = amount;
+            CurrencyCode = currencyCode;
+            SenderUserId = senderUserId;
+            SenderName = senderName;
+            SenderAvatar = senderAvatar;
+            ReceiverUserId = receiverUserId;
+            ReceiverName = receiverName;
+            ReceiverAvatar = receiverAvatar;
+            Date = date;
+            Attachments = attachments;
+        }
+
+        [Required] public string TransactionId { get; }
+        [Required] public double Amount { get; }
+        [Required] public string CurrencyCode { get; }
+        [Required] public string SenderUserId { get; }
+        [Required] public string SenderName { get; }
+        [Required] public Uri SenderAvatar { get; }
+        [Required] public string ReceiverUserId { get; }
+        [Required] public string ReceiverName { get; }
+        [Required] public Uri ReceiverAvatar { get; }
+        [Required] public DateTimeOffset Date { get; }
+        [Required] public Uri[] Attachments { get; }
+    }
 }

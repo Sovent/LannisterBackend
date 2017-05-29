@@ -19,5 +19,14 @@ namespace LannisterAPI.Controllers
         {
             return Ok();
         }
+
+        [HttpGet]
+        [Route("checkout/{checkoutId}")]
+        [ProducesResponseType(typeof(Checkout), 200)]
+        [ProducesResponseType(typeof(Error), 400)]
+        public async Task<IActionResult> GetCheckout(string checkoutId)
+        {
+            return Ok();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace LannisterAPI.Models
 {
@@ -32,5 +33,33 @@ namespace LannisterAPI.Models
 
         [Required] public string TrackingId { get; }
         [Required] public TrackingCheckoutPreview[] Checkouts { get; }
+    }
+
+    public class Checkout
+    {
+        public Checkout(string checkoutId, string name, string trackingId, string trackingName, double sum, string currencyCode, string authorId, string authorName, Uri authorAvatar, Uri[] attachments)
+        {
+            CheckoutId = checkoutId;
+            Name = name;
+            TrackingId = trackingId;
+            TrackingName = trackingName;
+            Sum = sum;
+            CurrencyCode = currencyCode;
+            AuthorId = authorId;
+            AuthorName = authorName;
+            AuthorAvatar = authorAvatar;
+            Attachments = attachments;
+        }
+
+        [Required] public string CheckoutId { get; }
+        [Required] public string Name { get; }
+        [Required] public string TrackingId { get; }
+        [Required] public string TrackingName { get; }
+        [Required] public double Sum { get; }
+        [Required] public string CurrencyCode { get; }
+        [Required] public string AuthorId { get; }
+        [Required] public string AuthorName { get; }
+        [Required] public Uri AuthorAvatar { get; }
+        [Required] public Uri[] Attachments { get; }
     }
 }

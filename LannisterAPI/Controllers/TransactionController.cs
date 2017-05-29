@@ -39,10 +39,19 @@ namespace LannisterAPI.Controllers
         }
 
         [HttpGet]
-        [Route("tracking/{id}/transactions")]
+        [Route("tracking/{trackingId}/transactions")]
         [ProducesResponseType(typeof(TrackingTransactionsList), 200)]
         [ProducesResponseType(typeof(Error), 400)]
         public async Task<IActionResult> GetTrackingTransactions(string trackingId)
+        {
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("transactions/{transactionId}")]
+        [ProducesResponseType(typeof(Transaction), 200)]
+        [ProducesResponseType(typeof(Error), 400)]
+        public async Task<IActionResult> GetTransaction(string transactionId)
         {
             return Ok();
         }
