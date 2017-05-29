@@ -67,5 +67,32 @@ namespace LannisterAPI.Controllers
         {
             return Ok();
         }
+
+        [HttpPost]
+        [Route("trackings/{trackingId}/users/{userId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(typeof(Error), 400)]
+        public async Task<IActionResult> InviteUser(string trackingId, string userId)
+        {
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("trackings/{trackingId}/users/{userId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(typeof(Error), 400)]
+        public async Task<IActionResult> DeleteUser(string trackingId, string userId)
+        {
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("trackings/{trackingId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(typeof(Error), 400)]
+        public async Task<IActionResult> CloseTracking(string trackingId)
+        {
+            return Ok();
+        }
     }
 }

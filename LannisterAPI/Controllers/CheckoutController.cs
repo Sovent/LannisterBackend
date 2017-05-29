@@ -37,5 +37,14 @@ namespace LannisterAPI.Controllers
         {
             return Ok();
         }
+
+        [HttpDelete]
+        [Route("checkout/{checkoutId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(typeof(Error), 400)]
+        public async Task<IActionResult> DeleteCheckout(string checkoutId)
+        {
+            return Ok();
+        }
     }
 }

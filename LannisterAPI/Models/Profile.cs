@@ -93,4 +93,10 @@ namespace LannisterAPI.Models
         [Required] public double Debt { get; }
         [Required] public string CurrencyCode { get; }
     }
+
+    public class RespondOnTrackingInvitationRequest
+    {
+        [Required] public string TrackingId { get; set; }
+        [Required] public bool AcceptInvitation { get; set; }
+    }
 }

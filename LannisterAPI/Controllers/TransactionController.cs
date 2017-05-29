@@ -61,5 +61,14 @@ namespace LannisterAPI.Controllers
         {
             return Ok();
         }
+
+        [HttpDelete]
+        [Route("transactions/{transactionId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(typeof(Error), 400)]
+        public async Task<IActionResult> DeleteTransaction(string transactionId)
+        {
+            return Ok();
+        }
     }
 }
