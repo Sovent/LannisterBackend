@@ -1,6 +1,5 @@
 version: '1.0.{build}'
 configuration:
-- Debug
 - Release
 platform: Any CPU
 environment:
@@ -11,10 +10,19 @@ init:
 before_build:
 - appveyor-retry dotnet restore -v Minimal
 build_script:
-- dotnet build "LannisterAPI" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
+- dotnet build "LannisterAPI" -c %CONFIGURATION% --version-suffix %LABEL%
 after_build:
-- dotnet publish "LannisterAPI" -c %CONFIGURATION% --no-build --version-suffix %LABEL% -o artifacts
+- dotnet publish "LannisterAPI" -c %CONFIGURATION% --version-suffix %LABEL% -o .\..\artifacts
+- ps: Compress-Archive -Path "artifacts\*" -DestinationPath "artifacts.zip"
 artifacts:
-- path: artifacts\*.*
-cache:
-- '%USERPROFILE%\.nuget\packages'
+- path: artifacts.zip
+deploy:
+  provider: FTP
+  protocol: ftp
+  host:
+    secure: wxerQP2q5gIQZ5HY/eP0S+iROzbaRRHWfIKtr1rLZP8=
+  username:
+    secure: KKJYq0FwgGfZTfOlwFNFwR52AyHcBjcaXny0y2lyCOY=
+  password:
+    secure: x/elDXXySkDI0Zp5Ya6xXQ==
+  application: artifacts.zip
