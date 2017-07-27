@@ -5,70 +5,70 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LannisterAPI.Controllers
 {
-    [Produces("application/json")]
-    public class TransactionController : Controller
+  [Produces("application/json")]
+  public class TransactionController : Controller
+  {
+    [HttpGet]
+    [Route("transactions")]
+    [ProducesResponseType(typeof(UserTransactionsList), 200)]
+    [ProducesResponseType(typeof(Error), 400)]
+    public async Task<IActionResult> GetUserTransactions()
     {
-        [HttpGet]
-        [Route("transactions")]
-        [ProducesResponseType(typeof(UserTransactionsList), 200)]
-        [ProducesResponseType(typeof(Error), 400)]
-        public async Task<IActionResult> GetUserTransactions()
+      return Ok(new UserTransactionsList(
+        Guid.NewGuid().ToString(),
+        new[]
         {
-            return Ok(new UserTransactionsList(
-                Guid.NewGuid().ToString(),
-                new[]
-                {
-                    new UserTransactionPreview(
-                        Guid.NewGuid().ToString(),
-                        Guid.NewGuid().ToString(),
-                        "Kostya Huev",
-                        new Uri("https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg"),
-                        440F,
-                        DateTimeOffset.UtcNow.AddDays(-5)), 
-                    new UserTransactionPreview(
-                        Guid.NewGuid().ToString(),
-                        Guid.NewGuid().ToString(),
-                        "Tanya Erofeeva",
-                        new Uri("http://www.stickpng.com/assets/images/585e4bc4cb11b227491c3395.png"),
-                        -1002F,
-                        DateTimeOffset.UtcNow.AddDays(-20)) 
-                }));
-        }
-
-        [HttpGet]
-        [Route("trackings/{trackingId}/transactions")]
-        [ProducesResponseType(typeof(TrackingTransactionsList), 200)]
-        [ProducesResponseType(typeof(Error), 400)]
-        public async Task<IActionResult> GetTrackingTransactions(string trackingId)
-        {
-            return Ok();
-        }
-
-        [HttpGet]
-        [Route("transactions/{transactionId}")]
-        [ProducesResponseType(typeof(Transaction), 200)]
-        [ProducesResponseType(typeof(Error), 400)]
-        public async Task<IActionResult> GetTransaction(string transactionId)
-        {
-            return Ok();
-        }
-
-        [HttpPost]
-        [Route("transactions")]
-        [ProducesResponseType(typeof(CreateTransactionResponse), 200)]
-        [ProducesResponseType(typeof(Error), 400)]
-        public async Task<IActionResult> CreateTransaction([FromBody] CreateTransactionRequest request)
-        {
-            return Ok();
-        }
-
-        [HttpDelete]
-        [Route("transactions/{transactionId}")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(typeof(Error), 400)]
-        public async Task<IActionResult> DeleteTransaction(string transactionId)
-        {
-            return Ok();
-        }
+          new UserTransactionPreview(
+            Guid.NewGuid().ToString(),
+            Guid.NewGuid().ToString(),
+            "Kostya Huev",
+            new Uri("https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg"),
+            440F,
+            DateTimeOffset.UtcNow.AddDays(-5)),
+          new UserTransactionPreview(
+            Guid.NewGuid().ToString(),
+            Guid.NewGuid().ToString(),
+            "Tanya Erofeeva",
+            new Uri("http://www.stickpng.com/assets/images/585e4bc4cb11b227491c3395.png"),
+            -1002F,
+            DateTimeOffset.UtcNow.AddDays(-20))
+        }));
     }
+
+    [HttpGet]
+    [Route("trackings/{trackingId}/transactions")]
+    [ProducesResponseType(typeof(TrackingTransactionsList), 200)]
+    [ProducesResponseType(typeof(Error), 400)]
+    public async Task<IActionResult> GetTrackingTransactions(string trackingId)
+    {
+      return Ok();
+    }
+
+    [HttpGet]
+    [Route("transactions/{transactionId}")]
+    [ProducesResponseType(typeof(Transaction), 200)]
+    [ProducesResponseType(typeof(Error), 400)]
+    public async Task<IActionResult> GetTransaction(string transactionId)
+    {
+      return Ok();
+    }
+
+    [HttpPost]
+    [Route("transactions")]
+    [ProducesResponseType(typeof(CreateTransactionResponse), 200)]
+    [ProducesResponseType(typeof(Error), 400)]
+    public async Task<IActionResult> CreateTransaction([FromBody] CreateTransactionRequest request)
+    {
+      return Ok();
+    }
+
+    [HttpDelete]
+    [Route("transactions/{transactionId}")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(typeof(Error), 400)]
+    public async Task<IActionResult> DeleteTransaction(string transactionId)
+    {
+      return Ok();
+    }
+  }
 }

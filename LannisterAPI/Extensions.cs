@@ -1,7 +1,6 @@
 ﻿namespace LannisterAPI
 {
-    public class Extensions
-    {
-        
-    }
+  public class Extensions
+  {
+  }
 }
